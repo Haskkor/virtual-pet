@@ -1,36 +1,19 @@
 # virtual-pet
 
-FIXME: description
+## Functionalities
 
-## Installation
+* Needs to be fed
+    * Different kinds of food will imply potential diseases
+* Can be sick and need to be cured
+    * Different diseases imply different cures
+* Needs to be cleaned
+    * Will get diseases if not clean 
+* Will age and get different traits
+* Needs to be entertained
+* Emotion gauge
+    * Can be petted
+    * Can be grounded
+* Has to be put to sleep
+    * Light off/on
 
-Download from http://example.com/FIXME.
-
-## Usage
-
-FIXME: explanation
-
-    $ java -jar virtual-pet-0.1.0-standalone.jar [args]
-
-## Options
-
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
-
-## License
-
-Copyright © 2019 FIXME
-
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+## To define
