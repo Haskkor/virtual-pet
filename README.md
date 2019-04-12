@@ -2,6 +2,13 @@
 
 ## Functionalities
 
+* Create a pet
+* Request a status of the pet
+* Do an action on the pet
+* Require a visual of the pet
+
+## Pet specs
+
 * Needs to be fed
     * Different kinds of food will imply potential diseases
 * Can be sick and need to be cured
