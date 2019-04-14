@@ -24,3 +24,10 @@
     * Light off/on
 
 ## To define
+
+Food Treshold           ->       Decrease rate
+Happyness Treshold      ->       Decrease rate
+Cleanliness Treshold    ->       Decrease rate
+Growth rate
+Age changes on rates
+Sickness rate
