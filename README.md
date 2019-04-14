@@ -31,3 +31,15 @@ Cleanliness Treshold    ->       Decrease rate
 Growth rate
 Age changes on rates
 Sickness rate
+
+## Values
+
+Egg to hatch            ->       1hour
+Kid to Teenager         ->       2 days 
+Teenager to Adult       ->       3 days
+Adult to Old            ->       4 days
+Old to Dead             ->       2 days
+
+Base score happyness    ->
+Base score sickeness    ->
+Base score hunger       ->
