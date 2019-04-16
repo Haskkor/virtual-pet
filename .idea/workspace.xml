@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c260280-fce2-4d5e-9f64-6d39688027d5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Leiningen__clj_time_0_15_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Leiningen__joda_time_2_10.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project.clj" beforeDir="false" afterPath="$PROJECT_DIR$/project.clj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/virtual_pet/core.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_pet/core.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virtual-pet.iml" beforeDir="false" afterPath="$PROJECT_DIR$/virtual-pet.iml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,8 +40,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/virtual_pet/core.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="915">
-              <caret line="61" column="66" selection-start-line="61" selection-start-column="66" selection-end-line="61" selection-end-column="66" />
+            <state relative-caret-position="1050">
+              <caret line="70" selection-start-line="70" selection-end-line="70" />
             </state>
           </provider>
         </entry>
@@ -136,7 +130,7 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="http.proxy" />
   </component>
-  <component name="ReplState" timestamp="1555385277073">{:repl-history {:ide [], :local [{:command &quot;(create-pet \&quot;test\&quot;)&quot;, :offset 19, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/date-time now)&quot;, :offset 20, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/now)&quot;, :offset 10, :ns &quot;virtual-pet.core&quot;} {:command &quot;(- (time/now) (time/now))&quot;, :offset 25, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/local-time)&quot;, :offset 17, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/local-time 10)&quot;, :offset 20, :ns &quot;virtual-pet.core&quot;} {:command &quot;(clojure.instant)&quot;, :offset 17, :ns &quot;virtual-pet.core&quot;} {:command &quot;(def now (time/local-date))&quot;, :offset 27, :ns &quot;virtual-pet.core&quot;} {:command &quot;(def now (time/local-date 10))&quot;, :offset 30, :ns &quot;virtual-pet.core&quot;} {:command &quot;(def now (time/local-date 10 2))&quot;, :offset 32, :ns &quot;virtual-pet.core&quot;} {:command &quot;(def now (time/local-date 10 2 3))&quot;, :offset 34, :ns &quot;virtual-pet.core&quot;} {:command &quot;(println now)&quot;, :offset 13, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/instant)&quot;, :offset 14, :ns &quot;virtual-pet.core&quot;} {:command &quot;(Date.)&quot;, :offset 7, :ns &quot;virtual-pet.core&quot;} {:command &quot;(java.time.LocalDateTime/now)&quot;, :offset 29, :ns &quot;virtual-pet.core&quot;} {:command &quot;(- LocalDateTime/now LocalDateTime/now)&quot;, :offset 39, :ns &quot;virtual-pet.core&quot;} {:command &quot;(- (LocalDateTime/now) (LocalDateTime/now))&quot;, :offset 43, :ns &quot;virtual-pet.core&quot;} {:command &quot;( (LocalDateTime/equals (LocalDateTime/now) (LocalDateTime/now)))&quot;, :offset 65, :ns &quot;virtual-pet.core&quot;} {:command &quot;((LocalDateTime/equals (LocalDateTime/now) (LocalDateTime/now)))&quot;, :offset 64, :ns &quot;virtual-pet.core&quot;} {:command &quot;(LocalDateTime/now)&quot;, :offset 19, :ns &quot;virtual-pet.core&quot;} {:command &quot;(LocalDateTime/getMinute)&quot;, :offset 25, :ns &quot;virtual-pet.core&quot;} {:command &quot;(.getMinutes LocalDateTime.)&quot;, :offset 28, :ns &quot;virtual-pet.core&quot;} {:command &quot;(.getMinutes LocalDateTime/now)&quot;, :offset 31, :ns &quot;virtual-pet.core&quot;} {:command &quot;(.getMinutes (LocalDateTime/now))&quot;, :offset 33, :ns &quot;virtual-pet.core&quot;} {:command &quot;(.getMinute (LocalDateTime/now))&quot;, :offset 32, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/local-date-time/now)&quot;, :offset 26, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/local-date-time)&quot;, :offset 22, :ns &quot;virtual-pet.core&quot;}], :remote []}}</component>
+  <component name="ReplState" timestamp="1555389310598">{:repl-history {:ide [], :local [{:command &quot;(create-pet \&quot;test\&quot;)&quot;, :offset 19, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/date-time now)&quot;, :offset 20, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/now)&quot;, :offset 10, :ns &quot;virtual-pet.core&quot;} {:command &quot;(- (time/now) (time/now))&quot;, :offset 25, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/local-time)&quot;, :offset 17, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/local-time 10)&quot;, :offset 20, :ns &quot;virtual-pet.core&quot;} {:command &quot;(clojure.instant)&quot;, :offset 17, :ns &quot;virtual-pet.core&quot;} {:command &quot;(def now (time/local-date))&quot;, :offset 27, :ns &quot;virtual-pet.core&quot;} {:command &quot;(def now (time/local-date 10))&quot;, :offset 30, :ns &quot;virtual-pet.core&quot;} {:command &quot;(def now (time/local-date 10 2))&quot;, :offset 32, :ns &quot;virtual-pet.core&quot;} {:command &quot;(def now (time/local-date 10 2 3))&quot;, :offset 34, :ns &quot;virtual-pet.core&quot;} {:command &quot;(println now)&quot;, :offset 13, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/instant)&quot;, :offset 14, :ns &quot;virtual-pet.core&quot;} {:command &quot;(Date.)&quot;, :offset 7, :ns &quot;virtual-pet.core&quot;} {:command &quot;(java.time.LocalDateTime/now)&quot;, :offset 29, :ns &quot;virtual-pet.core&quot;} {:command &quot;(- LocalDateTime/now LocalDateTime/now)&quot;, :offset 39, :ns &quot;virtual-pet.core&quot;} {:command &quot;(- (LocalDateTime/now) (LocalDateTime/now))&quot;, :offset 43, :ns &quot;virtual-pet.core&quot;} {:command &quot;( (LocalDateTime/equals (LocalDateTime/now) (LocalDateTime/now)))&quot;, :offset 65, :ns &quot;virtual-pet.core&quot;} {:command &quot;((LocalDateTime/equals (LocalDateTime/now) (LocalDateTime/now)))&quot;, :offset 64, :ns &quot;virtual-pet.core&quot;} {:command &quot;(LocalDateTime/now)&quot;, :offset 19, :ns &quot;virtual-pet.core&quot;} {:command &quot;(LocalDateTime/getMinute)&quot;, :offset 25, :ns &quot;virtual-pet.core&quot;} {:command &quot;(.getMinutes LocalDateTime.)&quot;, :offset 28, :ns &quot;virtual-pet.core&quot;} {:command &quot;(.getMinutes LocalDateTime/now)&quot;, :offset 31, :ns &quot;virtual-pet.core&quot;} {:command &quot;(.getMinutes (LocalDateTime/now))&quot;, :offset 33, :ns &quot;virtual-pet.core&quot;} {:command &quot;(.getMinute (LocalDateTime/now))&quot;, :offset 32, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/local-date-time/now)&quot;, :offset 26, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/local-date-time)&quot;, :offset 22, :ns &quot;virtual-pet.core&quot;}], :remote []}}</component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -237,18 +231,18 @@
       <updated>1554931011189</updated>
       <workItem from="1554931013944" duration="455000" />
       <workItem from="1555274009948" duration="3507000" />
-      <workItem from="1555360354661" duration="10712000" />
+      <workItem from="1555360354661" duration="12580000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14674000" />
+    <option name="totallyTimeSpent" value="16542000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1417" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25377283" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21564734" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -309,8 +303,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/virtual_pet/core.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="915">
-          <caret line="61" column="66" selection-start-line="61" selection-start-column="66" selection-end-line="61" selection-end-column="66" />
+        <state relative-caret-position="1050">
+          <caret line="70" selection-start-line="70" selection-end-line="70" />
         </state>
       </provider>
     </entry>

@@ -1,7 +1,8 @@
 (ns virtual-pet.core
   (:gen-class)
   (:require [clj-time.core :as time]
-            [clj-time.local :as local-time]))
+            [clj-time.local :as local-time]
+            [clojure.string :as str]))
 
 
 (def constants "TODO: Put in database"
@@ -56,11 +57,16 @@
 
 (defn feed-pet "Feed the pet a given type of food"
   [food pet]
-  (if (= food (get-in constants [:food :meal :type]))
-    (merge pet {:hunger {:current-value (inc (get-in pet [:hunger :current-value]))
-                         :last-check (time/now)}
-                :weight (+ (:weight pet) (get-in constants [:food (keyword food) :weight-gain]))})
-    (merge pet {})))
+  (let [hg (get-in pet [:hunger :current-value])
+        is-candy (= food (get-in constants [:food :candy :type]))
+        hp (get-in pet [:happiness :current-value])]
+    (merge pet {:hunger    {:current-value (if (> hg 0) (dec hg) hg)
+                            :last-check    (time/now)}
+                :weight    (+ (:weight pet) (get-in constants [:food (keyword (str/lower-case food)) :weight-gain]))
+                :happiness (if is-candy
+                             {:current-value (inc hp)
+                              :last-check    (time/now)}
+                             (:happiness pet))})))
 
 
 (defn -main
@@ -70,5 +76,4 @@
 
 
 ;(grow-older {:birth-date (time/now) :creation-date (time/now) :current-value 3 :last-check (time/minus (time/now) (time/days 2))})
-;(time/interval (time/minus (time/now) (time/days 2)) (time/now))
-;(> (time/in-days (time/interval (time/minus (time/now) (time/days 2)) (time/now))) 0)
+;(feed-pet "Meal" pet)
