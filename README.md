@@ -11,8 +11,10 @@
 
 * Needs to be fed
     * Different kinds of food will imply potential diseases
+    * Food can make pet happy but will make it fat and eventually make it sick
 * Can be sick and need to be cured
     * Different diseases imply different cures
+    * Using the wrong cure can lead to addiction
 * Needs to be cleaned
     * Will get diseases if not clean 
 * Will age and get different traits
@@ -43,6 +45,12 @@
 * Adult to Old            ->       4 days
 * Old to Dead             ->       2 days
 
+* Weight                  ->       10
+    * Loose 1 every 30 minutes if hunger is >= 3
+    * Gain 1 for each meal
+    * Gain 2 for each candy
+    * TODO MAKE THE MATHS TO KNOW WHAT WOULD BE THE THRESHOLDS BY AGE
+
 * Base score happiness    ->       3
     * Increase by 1 when petted or played with
     * Decrease by 1 when grounded
@@ -56,12 +64,25 @@
     * At 2 needs healing
     * At 4 needs healing and rest
     * Dead at 5
-* Base score hunger       ->       3
+* Base score hunger       ->       2
     * Increase by 1 every hour
         * Every 30 minutes when baby or old
     * Hungry at 3
         * Decrease happiness fast  
+        * Starts decreasing weight
+            * -1 every 30 minutes
     * Starving at 2
         * Depression and other sickness
         * Sickness won't go away by eating, must be cured
     * Dead at 0
+    
+* Sleep at
+    * Kid               ->      7
+    * Teenager          ->      9 
+    * Adult             ->      8
+    * Old               ->      7
+* Wake up at
+    * Kid               ->      7
+    * Teenager          ->      10
+    * Adult             ->      6
+    * Old               ->      8
