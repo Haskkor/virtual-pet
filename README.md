@@ -26,6 +26,9 @@
         * If not angry will loose happiness
 * Has to be put to sleep
     * Light off/on
+    * Lights off if not sleeping decrease happiness fast
+    * Lights on during sleep decrease happiness slowly
+    * Lights turn on automatically when waking up
 * Can get fat of too much food
 * Can get depressed
     * Leads to sickness
@@ -65,6 +68,8 @@
     * Decrease by 1 when sickness is at 3 or higher every 30 minutes
     * Decreased by 1 every hour
         * Every 30 minutes when baby or old
+    * Decrease by 1 every hour if the light is not off when sleeping
+    * Decrease by 2 every 30 minutes if the light is off when awake
 * Base score sickness     ->       0
     * Every 30 minutes spent with dejection increase by 1 
         * 2 when baby or old

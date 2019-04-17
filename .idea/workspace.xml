@@ -22,8 +22,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="375">
-                <caret line="25" column="42" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
+              <first_editor relative-caret-position="210">
+                <caret line="30" column="48" selection-start-line="30" selection-start-column="48" selection-end-line="30" selection-end-column="48" />
               </first_editor>
               <second_editor />
             </state>
@@ -33,8 +33,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+            <state relative-caret-position="150">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
         </entry>
@@ -42,8 +42,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/virtual_pet/core.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1105">
-              <caret line="106" column="28" lean-forward="true" selection-start-line="106" selection-start-column="28" selection-end-line="106" selection-end-column="28" />
+            <state relative-caret-position="1030">
+              <caret line="128" column="2" selection-start-line="128" selection-start-column="2" selection-end-line="128" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -82,7 +82,7 @@
   <component name="PhpServers">
     <servers />
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="2560" />
     <option name="height" value="1417" />
@@ -132,7 +132,7 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="http.proxy" />
   </component>
-  <component name="ReplState" timestamp="1555467574088">{:repl-history {:ide [], :local [{:command &quot;(create-pet \&quot;test\&quot;)&quot;, :offset 19, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/date-time now)&quot;, :offset 20, :ns &quot;virtual-pet.core&quot;} {:command &quot;(- (time/now) (time/now))&quot;, :offset 25, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/local-time)&quot;, :offset 17, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/local-time 10)&quot;, :offset 20, :ns &quot;virtual-pet.core&quot;} {:command &quot;(clojure.instant)&quot;, :offset 17, :ns &quot;virtual-pet.core&quot;} {:command &quot;(def now (time/local-date))&quot;, :offset 27, :ns &quot;virtual-pet.core&quot;} {:command &quot;(def now (time/local-date 10))&quot;, :offset 30, :ns &quot;virtual-pet.core&quot;} {:command &quot;(def now (time/local-date 10 2))&quot;, :offset 32, :ns &quot;virtual-pet.core&quot;} {:command &quot;(def now (time/local-date 10 2 3))&quot;, :offset 34, :ns &quot;virtual-pet.core&quot;} {:command &quot;(println now)&quot;, :offset 13, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/instant)&quot;, :offset 14, :ns &quot;virtual-pet.core&quot;} {:command &quot;(Date.)&quot;, :offset 7, :ns &quot;virtual-pet.core&quot;} {:command &quot;(java.time.LocalDateTime/now)&quot;, :offset 29, :ns &quot;virtual-pet.core&quot;} {:command &quot;(- LocalDateTime/now LocalDateTime/now)&quot;, :offset 39, :ns &quot;virtual-pet.core&quot;} {:command &quot;(- (LocalDateTime/now) (LocalDateTime/now))&quot;, :offset 43, :ns &quot;virtual-pet.core&quot;} {:command &quot;( (LocalDateTime/equals (LocalDateTime/now) (LocalDateTime/now)))&quot;, :offset 65, :ns &quot;virtual-pet.core&quot;} {:command &quot;((LocalDateTime/equals (LocalDateTime/now) (LocalDateTime/now)))&quot;, :offset 64, :ns &quot;virtual-pet.core&quot;} {:command &quot;(LocalDateTime/now)&quot;, :offset 19, :ns &quot;virtual-pet.core&quot;} {:command &quot;(LocalDateTime/getMinute)&quot;, :offset 25, :ns &quot;virtual-pet.core&quot;} {:command &quot;(.getMinutes LocalDateTime.)&quot;, :offset 28, :ns &quot;virtual-pet.core&quot;} {:command &quot;(.getMinutes LocalDateTime/now)&quot;, :offset 31, :ns &quot;virtual-pet.core&quot;} {:command &quot;(.getMinutes (LocalDateTime/now))&quot;, :offset 33, :ns &quot;virtual-pet.core&quot;} {:command &quot;(.getMinute (LocalDateTime/now))&quot;, :offset 32, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/local-date-time/now)&quot;, :offset 26, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/local-date-time)&quot;, :offset 22, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/local-date-time time/now)&quot;, :offset 31, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/local-date-time (time/now))&quot;, :offset 33, :ns &quot;virtual-pet.core&quot;} {:command &quot;(local-time/locasl-now)&quot;, :offset 23, :ns &quot;virtual-pet.core&quot;} {:command &quot;(local-time/local-now)&quot;, :offset 22, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/time-now)&quot;, :offset 15, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/date-time-now)&quot;, :offset 20, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/now)&quot;, :offset 10, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/interval (time/now) (time/now))&quot;, :offset 37, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/in-days (time/interval (time/now) (time/now)))&quot;, :offset 52, :ns &quot;virtual-pet.core&quot;} {:command &quot;(grow-older [:birth-date (time/now) :creation-date (time/now) :current-value 3 :last-check (time/now)])&quot;, :offset 103, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/minus- (time/now) \&quot;1 day\&quot;)&quot;, :offset 32, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/plus-days (time/now) 1)&quot;, :offset 29, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/minus (time/now) (time/days 1))&quot;, :offset 37, :ns &quot;virtual-pet.core&quot;} {:command &quot;(grow-older [:birth-date (time/now) :creation-date (time/now) :current-value 3 :last-check ((time/minus (time/now) (time/days 2)))])&quot;, :offset 132, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/minus (time/now) (time/days 2))&quot;, :offset 37, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/interval (time/now) (time/minus (time/now) (time/days 2)))&quot;, :offset 64, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/interval (time/minus (time/now) (time/days 2)) (time/now))&quot;, :offset 64, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/in-days (time/interval (time/minus (time/now) (time/days 2)) (time/now)))&quot;, :offset 79, :ns &quot;virtual-pet.core&quot;} {:command &quot;(&gt; 0 time/in-days (time/interval (time/minus (time/now) (time/days 2)) (time/now)))&quot;, :offset 83, :ns &quot;virtual-pet.core&quot;} {:command &quot;(&gt; 0 (time/in-days (time/interval (time/minus (time/now) (time/days 2)) (time/now))))&quot;, :offset 85, :ns &quot;virtual-pet.core&quot;} {:command &quot;(&gt; (time/in-days (time/interval (time/minus (time/now) (time/days 2)) (time/now))) 0)&quot;, :offset 85, :ns &quot;virtual-pet.core&quot;} {:command &quot;(grow-older [:birth-date (time/now) :creation-date (time/now) :current-value 3 :last-check (time/minus (time/now) (time/days 2))])&quot;, :offset 130, :ns &quot;virtual-pet.core&quot;} {:command &quot;(grow-older {:birth-date (time/now) :creation-date (time/now) :current-value 3 :last-check (time/minus (time/now) (time/days 2))})&quot;, :offset 130, :ns &quot;virtual-pet.core&quot;} {:command &quot;(feed-pet \&quot;Candy\&quot; pet)&quot;, :offset 22, :ns &quot;virtual-pet.core&quot;} {:command &quot;(feed-pet \&quot;Meal\&quot; pet)&quot;, :offset 21, :ns &quot;virtual-pet.core&quot;}], :remote []}}</component>
+  <component name="ReplState" timestamp="1555536871605">{:repl-history {:ide [], :local [{:command &quot;(create-pet \&quot;test\&quot;)&quot;, :offset 19, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/date-time now)&quot;, :offset 20, :ns &quot;virtual-pet.core&quot;} {:command &quot;(- (time/now) (time/now))&quot;, :offset 25, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/local-time)&quot;, :offset 17, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/local-time 10)&quot;, :offset 20, :ns &quot;virtual-pet.core&quot;} {:command &quot;(clojure.instant)&quot;, :offset 17, :ns &quot;virtual-pet.core&quot;} {:command &quot;(def now (time/local-date))&quot;, :offset 27, :ns &quot;virtual-pet.core&quot;} {:command &quot;(def now (time/local-date 10))&quot;, :offset 30, :ns &quot;virtual-pet.core&quot;} {:command &quot;(def now (time/local-date 10 2))&quot;, :offset 32, :ns &quot;virtual-pet.core&quot;} {:command &quot;(def now (time/local-date 10 2 3))&quot;, :offset 34, :ns &quot;virtual-pet.core&quot;} {:command &quot;(println now)&quot;, :offset 13, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/instant)&quot;, :offset 14, :ns &quot;virtual-pet.core&quot;} {:command &quot;(Date.)&quot;, :offset 7, :ns &quot;virtual-pet.core&quot;} {:command &quot;(java.time.LocalDateTime/now)&quot;, :offset 29, :ns &quot;virtual-pet.core&quot;} {:command &quot;(- LocalDateTime/now LocalDateTime/now)&quot;, :offset 39, :ns &quot;virtual-pet.core&quot;} {:command &quot;(- (LocalDateTime/now) (LocalDateTime/now))&quot;, :offset 43, :ns &quot;virtual-pet.core&quot;} {:command &quot;( (LocalDateTime/equals (LocalDateTime/now) (LocalDateTime/now)))&quot;, :offset 65, :ns &quot;virtual-pet.core&quot;} {:command &quot;((LocalDateTime/equals (LocalDateTime/now) (LocalDateTime/now)))&quot;, :offset 64, :ns &quot;virtual-pet.core&quot;} {:command &quot;(LocalDateTime/now)&quot;, :offset 19, :ns &quot;virtual-pet.core&quot;} {:command &quot;(LocalDateTime/getMinute)&quot;, :offset 25, :ns &quot;virtual-pet.core&quot;} {:command &quot;(.getMinutes LocalDateTime.)&quot;, :offset 28, :ns &quot;virtual-pet.core&quot;} {:command &quot;(.getMinutes LocalDateTime/now)&quot;, :offset 31, :ns &quot;virtual-pet.core&quot;} {:command &quot;(.getMinutes (LocalDateTime/now))&quot;, :offset 33, :ns &quot;virtual-pet.core&quot;} {:command &quot;(.getMinute (LocalDateTime/now))&quot;, :offset 32, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/local-date-time/now)&quot;, :offset 26, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/local-date-time)&quot;, :offset 22, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/local-date-time time/now)&quot;, :offset 31, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/local-date-time (time/now))&quot;, :offset 33, :ns &quot;virtual-pet.core&quot;} {:command &quot;(local-time/locasl-now)&quot;, :offset 23, :ns &quot;virtual-pet.core&quot;} {:command &quot;(local-time/local-now)&quot;, :offset 22, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/time-now)&quot;, :offset 15, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/date-time-now)&quot;, :offset 20, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/now)&quot;, :offset 10, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/interval (time/now) (time/now))&quot;, :offset 37, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/in-days (time/interval (time/now) (time/now)))&quot;, :offset 52, :ns &quot;virtual-pet.core&quot;} {:command &quot;(grow-older [:birth-date (time/now) :creation-date (time/now) :current-value 3 :last-check (time/now)])&quot;, :offset 103, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/minus- (time/now) \&quot;1 day\&quot;)&quot;, :offset 32, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/plus-days (time/now) 1)&quot;, :offset 29, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/minus (time/now) (time/days 1))&quot;, :offset 37, :ns &quot;virtual-pet.core&quot;} {:command &quot;(grow-older [:birth-date (time/now) :creation-date (time/now) :current-value 3 :last-check ((time/minus (time/now) (time/days 2)))])&quot;, :offset 132, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/minus (time/now) (time/days 2))&quot;, :offset 37, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/interval (time/now) (time/minus (time/now) (time/days 2)))&quot;, :offset 64, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/interval (time/minus (time/now) (time/days 2)) (time/now))&quot;, :offset 64, :ns &quot;virtual-pet.core&quot;} {:command &quot;(time/in-days (time/interval (time/minus (time/now) (time/days 2)) (time/now)))&quot;, :offset 79, :ns &quot;virtual-pet.core&quot;} {:command &quot;(&gt; 0 time/in-days (time/interval (time/minus (time/now) (time/days 2)) (time/now)))&quot;, :offset 83, :ns &quot;virtual-pet.core&quot;} {:command &quot;(&gt; 0 (time/in-days (time/interval (time/minus (time/now) (time/days 2)) (time/now))))&quot;, :offset 85, :ns &quot;virtual-pet.core&quot;} {:command &quot;(&gt; (time/in-days (time/interval (time/minus (time/now) (time/days 2)) (time/now))) 0)&quot;, :offset 85, :ns &quot;virtual-pet.core&quot;} {:command &quot;(grow-older [:birth-date (time/now) :creation-date (time/now) :current-value 3 :last-check (time/minus (time/now) (time/days 2))])&quot;, :offset 130, :ns &quot;virtual-pet.core&quot;} {:command &quot;(grow-older {:birth-date (time/now) :creation-date (time/now) :current-value 3 :last-check (time/minus (time/now) (time/days 2))})&quot;, :offset 130, :ns &quot;virtual-pet.core&quot;} {:command &quot;(feed-pet \&quot;Candy\&quot; pet)&quot;, :offset 22, :ns &quot;virtual-pet.core&quot;} {:command &quot;(feed-pet \&quot;Meal\&quot; pet)&quot;, :offset 21, :ns &quot;virtual-pet.core&quot;} {:command &quot;(heal-pet pet)&quot;, :offset 14, :ns &quot;virtual-pet.core&quot;} {:command &quot;(pet-pet {:current-value 3 :last-check (time/now)})&quot;, :offset 51, :ns &quot;virtual-pet.core&quot;} {:command &quot;(ground-pet pet)&quot;, :offset 16, :ns &quot;virtual-pet.core&quot;} {:command &quot;(clean-pet {:current-value 1 :last-check (time/now)})&quot;, :offset 53, :ns &quot;virtual-pet.core&quot;} {:command &quot;(change-lights {:current-value true :last-check (time/now)})&quot;, :offset 60, :ns &quot;virtual-pet.core&quot;}], :remote []}}</component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -233,15 +233,16 @@
       <updated>1554931011189</updated>
       <workItem from="1554931013944" duration="455000" />
       <workItem from="1555274009948" duration="3507000" />
-      <workItem from="1555360354661" duration="14838000" />
+      <workItem from="1555360354661" duration="17773000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18800000" />
+    <option name="totallyTimeSpent" value="21735000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1417" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21564734" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -288,8 +289,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="375">
-            <caret line="25" column="42" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
+          <first_editor relative-caret-position="210">
+            <caret line="30" column="48" selection-start-line="30" selection-start-column="48" selection-end-line="30" selection-end-column="48" />
           </first_editor>
           <second_editor />
         </state>
@@ -297,15 +298,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/project.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+        <state relative-caret-position="150">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/virtual_pet/core.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1105">
-          <caret line="106" column="28" lean-forward="true" selection-start-line="106" selection-start-column="28" selection-end-line="106" selection-end-column="28" />
+        <state relative-caret-position="1030">
+          <caret line="128" column="2" selection-start-line="128" selection-start-column="2" selection-end-line="128" selection-end-column="2" />
         </state>
       </provider>
     </entry>
