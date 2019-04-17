@@ -22,11 +22,18 @@
 * Emotion gauge
     * Can be petted
     * Can be grounded
+        * If angry just loose the anger
+        * If not angry will loose happiness
 * Has to be put to sleep
     * Light off/on
 * Can get fat of too much food
 * Can get depressed
     * Leads to sickness
+    
+## V1
+
+* Healing when not sick only leads to a lost of happiness
+* Only 2 kinds of food. One is making the pet fatter but happier
 
 ## To define
 

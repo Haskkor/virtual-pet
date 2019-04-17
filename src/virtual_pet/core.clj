@@ -7,10 +7,11 @@
 
 (def constants "TODO: Put in database"
   {:base       {:age       0
+                :anger     0
                 :happiness 3
                 :hunger    3
                 :sickness  0}
-   :thresholds ""
+   :thresholds {:happiness 5}
    :food       {:meal  {:type        "Meal"
                         :weight-gain 1}
                 :candy {:type        "Candy"
@@ -21,6 +22,8 @@
   {:age       {:birth-date    (time/now)
                :creation-date (time/now)
                :current-value 0
+               :last-check    (time/now)}
+   :anger     {:current-value 0
                :last-check    (time/now)}
    :happiness {:current-value 3
                :last-check    (time/now)}
@@ -37,6 +40,8 @@
   {:age       {:birth-date    (time/now)
                :creation-date (time/now)
                :current-value (get-in constants [:base :age])
+               :last-check    (time/now)}
+   :anger     {:current-value 0
                :last-check    (time/now)}
    :happiness {:current-value (get-in constants [:base :happiness])
                :last-check    (time/now)}
@@ -69,6 +74,33 @@
                              (:happiness pet))})))
 
 
+(defn heal-pet "Give medicine to the pet"
+  [pet]
+  (let [hp (get-in pet [:happiness :current-value])
+        sk (get-in pet [:sickness :current-value])]
+    (merge pet {:sickness  {:current-value (if (> sk 0) (dec sk) sk)
+                            :last-check    (time/now)}
+                :happiness {:current-value (if (= sk 0) (dec hp) hp)
+                            :last-check    (time/now)}})))
+
+
+(defn pet-pet "Pet the pet"
+  [current-happiness]
+  (let [hp (:current-value current-happiness)]
+    {:current-value (if (< hp (get-in constants [:thresholds :happiness])) (inc hp) hp)
+     :last-check    (time/now)}))
+
+
+(defn ground-pet "Ground the pet"
+  [pet]
+  (let []))
+
+
+(defn clean-pet
+  []
+  ())
+
+
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
@@ -77,3 +109,5 @@
 
 ;(grow-older {:birth-date (time/now) :creation-date (time/now) :current-value 3 :last-check (time/minus (time/now) (time/days 2))})
 ;(feed-pet "Meal" pet)
+;(heal-pet pet)
+;(pet-pet {:current-value 3 :last-check (time/now)})
