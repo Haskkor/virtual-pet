@@ -124,9 +124,48 @@
    :last-check (time/now)})
 
 
-(defn get-stats
+(defn get-full-stats
   [pet]
-  ())
+  (let []
+    (str )"" + str(hg) + "" + () + "" + () + "")
+
+name age weight lights hunger happiness sickness dirtiness anger
+
+
+(defn get-base-stats
+  [pet]
+  (let []
+    (str )"" + str(hg) + "" + () + "" + () + "")
+
+
+(defn get-hunger
+  [pet]
+  (let []
+    (str )"" + str(hg) + "" + () + "" + () + "")
+
+
+(defn get-hapiness
+  [pet]
+  (let []
+    (str )"" + str(hg) + "" + () + "" + () + "")
+
+
+(defn get-sickness
+  [pet]
+  (let []
+    (str )"" + str(hg) + "" + () + "" + () + "")
+
+
+(defn get-dirtiness
+  [pet]
+  (let []
+    (str )"" + str(hg) + "" + () + "" + () + "")
+
+
+(defn get-anger
+  [pet]
+  (let []
+    (str )"" + str(hg) + "" + () + "" + () + "")
 
 
 (defn -main
