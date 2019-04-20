@@ -1,66 +1,6 @@
 (ns virtual-pet.core
   (:gen-class)
-  (:require [clj-time.core :as time]
-            [clojure.string :as str]))
-
-
-(def constants "TODO: Put in database"
-  {:base       {:age       0
-                :anger     0
-                :dirtiness 0
-                :happiness 3
-                :hunger    3
-                :lights    true
-                :sickness  0}
-   :thresholds {:dirtiness 5
-                :happiness 5}
-   :food       {:meal  {:type        "Meal"
-                        :weight-gain 1}
-                :candy {:type        "Candy"
-                        :weight-gain 2}}})
-
-
-(def pet "REFERENCE ONLY: Types"
-  {:age       {:birth-date    (time/now)
-               :creation-date (time/now)
-               :current-value 0
-               :last-check    (time/now)}
-   :anger     {:current-value 0
-               :last-check    (time/now)}
-   :dirtiness {:current-value 0
-               :last-check    (time/now)}
-   :happiness {:current-value 3
-               :last-check    (time/now)}
-   :hunger    {:current-value 3
-               :last-check    (time/now)}
-   :lights    {:current-value true
-               :last-check    (time/now)}
-   :name      "JeremyGotchi"
-   :sickness  {:current-value 0
-               :last-check    (time/now)}
-   :weight    10})
-
-
-(defn create-pet "TODO: API endpoint to create a pet in the database"
-  [name]
-  {:age       {:birth-date    (time/now)
-               :creation-date (time/now)
-               :current-value (get-in constants [:base :age])
-               :last-check    (time/now)}
-   :anger     {:current-value 0
-               :last-check    (time/now)}
-   :dirtiness {:current-value 0
-               :last-check    (time/now)}
-   :happiness {:current-value (get-in constants [:base :happiness])
-               :last-check    (time/now)}
-   :hunger    {:current-value (get-in constants [:base :hunger])
-               :last-check    (time/now)}
-   :lights    {:current-value true
-               :last-check    (time/now)}
-   :name      name
-   :sickness  {:current-value (get-in constants [:base :sickness])
-               :last-check    (time/now)}
-   :weight    10})
+  (:require [clj-time.core :as time]))
 
 
 (defn grow-older "Take a pet current age and change the value if need be"
@@ -68,104 +8,6 @@
   (when (> (time/in-days (time/interval (:last-check current-age) (time/now))) 0)
     (merge current-age {:current-value (inc (:current-value current-age))
                         :last-check    (time/now)})))
-
-
-(defn feed-pet "Feed the pet a given type of food"
-  [food pet]
-  (let [hg (get-in pet [:hunger :current-value])
-        is-candy (= food (get-in constants [:food :candy :type]))
-        hp (get-in pet [:happiness :current-value])]
-    (merge pet {:hunger    {:current-value (if (> hg 0) (dec hg) hg)
-                            :last-check    (time/now)}
-                :weight    (+ (:weight pet) (get-in constants [:food (keyword (str/lower-case food)) :weight-gain]))
-                :happiness (if is-candy
-                             {:current-value (inc hp)
-                              :last-check    (time/now)}
-                             (:happiness pet))})))
-
-
-(defn heal-pet "Give medicine to the pet"
-  [pet]
-  (let [hp (get-in pet [:happiness :current-value])
-        sk (get-in pet [:sickness :current-value])]
-    (merge pet {:sickness  {:current-value (if (> sk 0) (dec sk) sk)
-                            :last-check    (time/now)}
-                :happiness {:current-value (if (= sk 0) (dec hp) hp)
-                            :last-check    (time/now)}})))
-
-
-(defn pet-pet "Pet the pet"
-  [current-happiness]
-  (let [hp (:current-value current-happiness)]
-    {:current-value (if (< hp (get-in constants [:thresholds :happiness])) (inc hp) hp)
-     :last-check    (time/now)}))
-
-
-(defn ground-pet "Ground the pet"
-  [pet]
-  (let [ag (get-in pet [:anger :current-value])
-        hp (get-in pet [:happiness :current-value])]
-    (merge pet {:anger     {:current-value (if (> ag 0) (dec ag) ag)
-                            :last-check    (time/now)}
-                :happiness {:current-value (if (= ag 0) (dec hp) hp)
-                            :last-check    (time/now)}})))
-
-
-(defn clean-pet
-  [current-dirtyness]
-  (let [dt (:current-value current-dirtyness)]
-    {:current-value (if (< dt (get-in constants [:thresholds :dirtiness])) (dec dt) dt)
-     :last-check    (time/now)}))
-
-
-(defn change-lights
-  [current-lights]
-  {:current-value (not (:current-value current-lights))
-   :last-check (time/now)})
-
-
-(defn get-full-stats
-  [pet]
-  (let []
-    (str )"" + str(hg) + "" + () + "" + () + "")
-
-name age weight lights hunger happiness sickness dirtiness anger
-
-
-(defn get-base-stats
-  [pet]
-  (let []
-    (str )"" + str(hg) + "" + () + "" + () + "")
-
-
-(defn get-hunger
-  [pet]
-  (let []
-    (str )"" + str(hg) + "" + () + "" + () + "")
-
-
-(defn get-hapiness
-  [pet]
-  (let []
-    (str )"" + str(hg) + "" + () + "" + () + "")
-
-
-(defn get-sickness
-  [pet]
-  (let []
-    (str )"" + str(hg) + "" + () + "" + () + "")
-
-
-(defn get-dirtiness
-  [pet]
-  (let []
-    (str )"" + str(hg) + "" + () + "" + () + "")
-
-
-(defn get-anger
-  [pet]
-  (let []
-    (str )"" + str(hg) + "" + () + "" + () + "")
 
 
 (defn -main
@@ -181,3 +23,5 @@ name age weight lights hunger happiness sickness dirtiness anger
 ;(ground-pet pet)
 ;(clean-pet {:current-value 1 :last-check (time/now)})
 ;(change-lights {:current-value true :last-check (time/now)})
+;(get-full-stats pet)
+;(get-happiness {:current-value 3 :last-check (time/now)})
