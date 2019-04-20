@@ -1,6 +1,8 @@
 (ns virtual-pet.core
   (:gen-class)
-  (:require [clj-time.core :as time]))
+  (:require [clj-time.core :as time]
+            [compojure.core :refer :all]
+            [compojure.route :as route]))
 
 
 (defn grow-older "Take a pet current age and change the value if need be"
@@ -10,10 +12,9 @@
                         :last-check    (time/now)})))
 
 
-(defn -main
-  "I don't do a whole lot ... yet."
-  [& args]
-  (println "Hello, World!"))
+(defroutes app
+           (GET "/" [] "<h1>Hello World</h1>")
+           (route/not-found "<h1>Page not found</h1>"))
 
 
 ;(grow-older {:birth-date (time/now) :creation-date (time/now) :current-value 3 :last-check (time/minus (time/now) (time/days 2))})
