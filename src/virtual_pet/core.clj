@@ -2,7 +2,7 @@
   (:gen-class)
   (:require [clj-time.core :as time]
             [compojure.core :refer :all]
-            [compojure.route :as route]))
+            [org.httpkit.server :refer [run-server]]))
 
 
 (defn grow-older "Take a pet current age and change the value if need be"
@@ -13,8 +13,13 @@
 
 
 (defroutes app
-           (GET "/" [] "<h1>Hello World</h1>")
-           (route/not-found "<h1>Page not found</h1>"))
+           (GET "/" [] "Hello World"))
+
+
+(defn -main []
+  (let [port (Integer/parseInt (or (System/getenv "PORT") "8080"))]
+    (run-server app {:port port})
+    (println (str "Listening on port " port))))
 
 
 ;(grow-older {:birth-date (time/now) :creation-date (time/now) :current-value 3 :last-check (time/minus (time/now) (time/days 2))})
