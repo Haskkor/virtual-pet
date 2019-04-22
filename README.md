@@ -1,15 +1,5 @@
 # virtual-pet
 
-lein uberjar
-java -jar target/uberjar/virtual-pet-0.1.0-SNAPSHOT-standalone.jar
-docker build -t jfarnault/virtual-pet .
-docker images
-docker system prune
-docker image xxx xxx
-docker image prune
-docker image prune -a
-docker run --rm -p 4000:4000 jfarnault/virtual-pet
-
 ## Functionalities
 
 * Create a pet
