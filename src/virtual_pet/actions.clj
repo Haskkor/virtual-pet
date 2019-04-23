@@ -1,29 +1,31 @@
 (ns virtual-pet.actions
   (:require [clj-time.core :as time]
             [clojure.string :as str]
-            [virtual-pet.constants :as const]))
-
+            [virtual-pet.constants :as const])
+  (:import (org.bson.types ObjectId)))
 
 
 (defn create-pet "TODO: API endpoint to create a pet in the database"
-  [name]
-  {:age       {:birth-date    (time/now)
-               :creation-date (time/now)
+  [name username]
+  {:age       {:birth-date    (str (time/now))
+               :creation-date (str (time/now))
                :current-value (get-in const/constants [:base :age])
-               :last-check    (time/now)}
+               :last-check    (str (time/now))}
    :anger     {:current-value 0
-               :last-check    (time/now)}
+               :last-check    (str (time/now))}
    :dirtiness {:current-value 0
-               :last-check    (time/now)}
+               :last-check    (str (time/now))}
    :happiness {:current-value (get-in const/constants [:base :happiness])
-               :last-check    (time/now)}
+               :last-check    (str (time/now))}
    :hunger    {:current-value (get-in const/constants [:base :hunger])
-               :last-check    (time/now)}
+               :last-check    (str (time/now))}
+   :_id       (ObjectId.)
    :lights    {:current-value true
-               :last-check    (time/now)}
+               :last-check    (str (time/now))}
    :name      name
    :sickness  {:current-value (get-in const/constants [:base :sickness])
-               :last-check    (time/now)}
+               :last-check    (str (time/now))}
+   :username  username
    :weight    10})
 
 
