@@ -5,7 +5,7 @@
   (:import (org.bson.types ObjectId)))
 
 
-(defn create-pet "TODO: API endpoint to create a pet in the database"
+(defn template-pet "TODO: API endpoint to create a pet in the database"
   [name username]
   {:age       {:birth-date    (str (time/now))
                :creation-date (str (time/now))

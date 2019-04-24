@@ -10,7 +10,7 @@
 
 (defn connect-database
   []
-  (let [conn (mg/connect)
+  (let [conn (mg/connect {:host "mongo" :port 27017})
         db (mg/get-db conn "virtual-pet")]
     {:coll "pets"
      :conn conn
@@ -23,9 +23,12 @@
 
 
 (defn create-pet
-  [name username]
-  (let [dbConnect (connect-database)
-        initial-pet (actions/create-pet name username)]
+  [request]
+  (let [body (http/get-body request)
+        name (:name body)
+        username (:username body)
+        dbConnect (connect-database)
+        initial-pet (actions/template-pet name username)]
     (if (not (is-name-taken dbConnect name username))
       (try
         (mc/insert (:db dbConnect) (:coll dbConnect) initial-pet)
@@ -37,8 +40,7 @@
 
 (defroutes app
            (GET "/" [] "Hello World")
-           (POST "/create-pet/" [] (fn [request] ((let [body (http/get-body request)]
-                                                    (create-pet (:name body) (:username body)))))))
+           (POST "/create-pet/" [] (fn [request] (create-pet request))))
 
 
 (defn -main []

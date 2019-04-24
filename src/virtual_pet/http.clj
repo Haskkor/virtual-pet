@@ -1,4 +1,5 @@
-(ns virtual-pet.http)
+(ns virtual-pet.http
+  (:require [cheshire.core :as json]))
 
 
 (defn standard-response
@@ -17,4 +18,5 @@
 
 (defn get-body
   [request]
-  (slurp (.bytes (:body request)) :encoding "UTF-8"))
+  (let [body (slurp (.bytes (:body request)) :encoding "UTF-8")]
+    (json/parse-string body true)))
