@@ -1,0 +1,4 @@
+{:mongo {:port 27017
+         :host "mongo"
+         :db "virtual-pet"
+         :coll "pets"}}

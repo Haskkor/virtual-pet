@@ -33,6 +33,7 @@
     <orderEntry type="library" name="Leiningen: instaparse:1.4.8" level="project" />
     <orderEntry type="library" name="Leiningen: joda-time:2.10" level="project" />
     <orderEntry type="library" name="Leiningen: medley:1.0.0" level="project" />
+    <orderEntry type="library" name="Leiningen: mount:0.1.16" level="project" />
     <orderEntry type="library" name="Leiningen: nrepl:0.6.0" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/clojure:1.8.0" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/tools.macro:0.1.5" level="project" />
