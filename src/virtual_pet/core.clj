@@ -4,8 +4,40 @@
             [org.httpkit.server :refer [run-server]]
             [monger.collection :as mc]
             [monger.core :as mg]
+            [mount.core :refer [defstate]]
             [virtual-pet.actions :as actions]
             [virtual-pet.http :as http]))
+
+
+
+;; http://clojuremongodb.info/articles/integration.html
+
+;; first test
+(defstate conn :start (create-conn)
+               :stop (disconnect conn))
+
+
+;; second test
+(defstate settings
+  :start {:mongo-uri "mongodb://localhost/my-database"})
+
+(defn- mongo-connect
+  [{:keys [mongo-uri]}]
+  (mg/connect-via-uri mongo-uri))
+
+(defn- mongo-disconnect
+  [{:keys [conn] :as mongo-client}]
+  (mg/disconnect conn))
+
+(defstate mongo-client
+  :start (mongo-connect settings)
+  :stop (mongo-disconnect mongo-client))
+
+(defn db [] (:db mongo-client))
+
+
+
+
 
 
 (defn connect-database
