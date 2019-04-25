@@ -8,6 +8,7 @@
                  [com.novemberain/monger "3.1.0"]
                  [compojure "1.6.1"]
                  [http-kit "2.3.0"]
+                 [mount "0.1.16"]
                  [org.clojure/clojure "1.8.0"]]
   :main ^:skip-aot virtual-pet.core
   :target-path "target/%s"
