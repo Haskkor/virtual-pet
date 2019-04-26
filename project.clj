@@ -12,4 +12,5 @@
                  [org.clojure/clojure "1.8.0"]]
   :main ^:skip-aot virtual-pet.core
   :target-path "target/%s"
+  :resource-paths ["src/resources"]
   :profiles {:uberjar {:aot :all}})
