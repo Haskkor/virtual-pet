@@ -30,6 +30,10 @@
 
 (defroutes app
            (GET "/" [] "Hello World")
+           (GET"/full-status")
+           (GET"/hunger-status")
+           (GET"/happiness-status")
+           (GET"/sickness-status")
            (POST "/create-pet/" [] (fn [request] (create-pet request))))
 
 
