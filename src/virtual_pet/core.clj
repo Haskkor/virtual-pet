@@ -6,7 +6,8 @@
             [mount.core :as mount]
             [virtual-pet.actions :as actions]
             [virtual-pet.db :refer [db conn]]
-            [virtual-pet.http :as http]))
+            [virtual-pet.http :as http]
+            [virtual-pet.status :as status]))
 
 
 (defn is-name-taken
@@ -28,12 +29,23 @@
       (http/standard-error "Name already exists for this user"))))
 
 
+(defn get-pet
+  [request]
+  (let [body (http/get-body request)
+        name (:name body)
+        username (:username body)]
+    (mc/find-one-as-map db "pets" {:name name :username username})))
+
+
 (defroutes app
            (GET "/" [] "Hello World")
-           (GET"/full-status")
-           (GET"/hunger-status")
-           (GET"/happiness-status")
-           (GET"/sickness-status")
+           (GET "/full-stats" [] (fn [request] (status/get-base-stats (get-pet request))))
+           (GET "/base-stats" [] "Hello World")
+           (GET "/hunger-stats" [] "Hello World")
+           (GET "/happiness-stats" [] "Hello World")
+           (GET "/sickness-stats" [] "Hello World")
+           (GET "/dirtiness-stats" [] "Hello World")
+           (GET "/anger-stats" [] "Hello World")
            (POST "/create-pet/" [] (fn [request] (create-pet request))))
 
 
