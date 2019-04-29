@@ -1,20 +1,24 @@
-(ns virtual-pet.status)
+(ns virtual-pet.status
+  (:require [virtual-pet.http :as http]))
 
 
 (defn get-full-stats
   [pet]
-  (let [name (:name pet)
-        age (get-in pet [:age :current-value])
-        wght (:weight pet)
-        lght (get-in pet [:lights :current-value])
-        hg (get-in pet [:hunger :current-value])
-        hp (get-in pet [:happiness :current-value])
-        sk (get-in pet [:sickness :current-value])
-        dt (get-in pet [:dirtiness :current-value])
-        ag (get-in pet [:anger :current-value])]
-    (clojure.string/join "" [name ": " (str age) " day(s) old, " (str wght) " grams. Lights on: " (str lght)
-                             ". Hunger: " (str hg) ". Happiness: " (str hp) ". Sickness: " (str sk) ". Dirtiness: "
-                             (str dt) ". Anger: " (str ag) "."])))
+  (if (some? pet)
+    (let [name (:name pet)
+          age (get-in pet [:age :current-value])
+          wght (:weight pet)
+          lght (get-in pet [:lights :current-value])
+          hg (get-in pet [:hunger :current-value])
+          hp (get-in pet [:happiness :current-value])
+          sk (get-in pet [:sickness :current-value])
+          dt (get-in pet [:dirtiness :current-value])
+          ag (get-in pet [:anger :current-value])]
+      (http/standard-response (clojure.string/join "" [name ": " (str age) " day(s) old, " (str wght) " grams. Lights on: " (str lght)
+                                                       ". Hunger: " (str hg) ". Happiness: " (str hp) ". Sickness: " (str sk) ". Dirtiness: "
+                                                       (str dt) ". Anger: " (str ag) "."])))
+    (http/standard-error "Pet does not exit for this user")))
+
 
 
 (defn get-base-stats
@@ -26,31 +30,43 @@
     (clojure.string/join "" [name ": " (str age) " day(s) old, " (str wght) " grams. Lights on: " (str lght)])))
 
 
+
+
+;; TESTING
+(defn get-specific-stat
+  [pet stat-name]
+  (let [st (get-in pet [(keyword stat-name) :current-value])]
+    (clojure.string/join [stat-name (str hg) "."])))
+
+
+
+
+
 (defn get-hunger
-  [current-hunger]
-  (let [hg (:current-value current-hunger)]
+  [pet]
+  (let [hg (get-in pet [:hunger :current-value])]
     (clojure.string/join ["Hunger: " (str hg) "."])))
 
 
 (defn get-happiness
-  [current-happiness]
-  (let [hp (:current-value current-happiness)]
+  [pet]
+  (let [hp (get-in pet [:happiness :current-value])]
     (clojure.string/join ["Happiness: " (str hp) "."])))
 
 
 (defn get-sickness
-  [current-sickness]
-  (let [sk (:current-value current-sickness)]
+  [pet]
+  (let [sk (get-in pet [:sickness :current-value])]
     (clojure.string/join ["Sickness: " (str sk) "."])))
 
 
 (defn get-dirtiness
-  [current-dirtiness]
-  (let [dt (:current-value current-dirtiness)]
-    (clojure.string/join ["Dirtiness: "(str dt) "."])))
+  [pet]
+  (let [dt (get-in pet [:dirtiness :current-value])]
+    (clojure.string/join ["Dirtiness: " (str dt) "."])))
 
 
 (defn get-anger
-  [current-anger]
-  (let [ag (:current-value current-anger)]
+  [pet]
+  (let [ag (get-in pet [:dirtiness :current-value])]
     (clojure.string/join ["Anger: " (str ag) "."])))

@@ -21,6 +21,8 @@
         name (:name body)
         username (:username body)
         initial-pet (actions/template-pet name username)]
+    (println db)
+    (println name)
     (if (not (is-name-taken name username))
       (try
         (mc/insert db "pets" initial-pet)
@@ -30,22 +32,26 @@
 
 
 (defn get-pet
-  [request]
-  (let [body (http/get-body request)
-        name (:name body)
-        username (:username body)]
-    (mc/find-one-as-map db "pets" {:name name :username username})))
+  [name username]
+  (mc/find-one-as-map db "pets" {:name name :username username}))
 
 
 (defroutes app
            (GET "/" [] "Hello World")
-           (GET "/full-stats" [] (fn [request] (status/get-base-stats (get-pet request))))
-           (GET "/base-stats" [] "Hello World")
-           (GET "/hunger-stats" [] "Hello World")
-           (GET "/happiness-stats" [] "Hello World")
-           (GET "/sickness-stats" [] "Hello World")
-           (GET "/dirtiness-stats" [] "Hello World")
-           (GET "/anger-stats" [] "Hello World")
+           (GET "/full-stats-pet/:pet-name/user/:username" [pet-name username]
+             (status/get-full-stats (get-pet pet-name username)))
+           (GET "/base-stats-pet/:pet-name/user/:username" [pet-name username]
+             (status/get-base-stats (get-pet pet-name username)))
+           (GET "/hunger-stats-pet/:pet-name/user/:username" [pet-name username]
+             (status/get-hunger (get-pet pet-name username)))
+           (GET "/happiness-stats-pet/:pet-name/user/:username" [pet-name username]
+             (status/get-happiness (get-pet pet-name username)))
+           (GET "/sickness-stats-pet/:pet-name/user/:username" [pet-name username]
+             (status/get-sickness (get-pet pet-name username)))
+           (GET "/dirtiness-stats-pet/:pet-name/user/:username" [pet-name username]
+             (status/get-dirtiness (get-pet pet-name username)))
+           (GET "/anger-stats-pet/:pet-name/user/:username" [pet-name username]
+             (status/get-anger (get-pet pet-name username)))
            (POST "/create-pet/" [] (fn [request] (create-pet request))))
 
 
