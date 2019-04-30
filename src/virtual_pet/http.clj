@@ -20,3 +20,12 @@
   [request]
   (let [body (slurp (.bytes (:body request)) :encoding "UTF-8")]
     (json/parse-string body true)))
+
+
+(defn get-values
+  [request]
+  (let [body (get-body request)
+        name (:name body)
+        username (:username body)
+        food (:food body)]
+    {:name name :username username :food food}))

@@ -24,6 +24,8 @@
              (status/get-specific-stat (db-actions/get-pet pet-name username) "dirtiness"))
            (GET "/anger-stats-pet/:pet-name/user/:username" [pet-name username]
              (status/get-specific-stat (db-actions/get-pet pet-name username) "anger"))
+
+
            (POST "/create-pet/" [] (fn [request] (actions/create-pet request)))
 
 

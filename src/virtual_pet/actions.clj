@@ -34,11 +34,9 @@
 
 (defn create-pet "Create a new pet"
   [request]
-  (let [body (http/get-body request)
-        name (:name body)
-        username (:username body)
-        initial-pet (template-pet name username)]
-    (if (not (db-actions/is-name-taken name username))
+  (let [names (http/get-values request)
+        initial-pet (template-pet (:name names) (:username names))]
+    (if (not (db-actions/is-name-taken (:name names) (:username names)))
       (try
         (mc/insert db "pets" initial-pet)
         (http/standard-response "Create initial pet ok")
@@ -47,18 +45,24 @@
 
 
 (defn feed-pet "Feed the pet a given type of food"
-  [food pet]
-  (let [hg (get-in pet [:hunger :current-value])
-        is-candy (= food (get-in const/constants [:food :candy :type]))
+  [request]
+  (let [values (http/get-values request)
+        pet (db-actions/get-pet (:name values) (:username values))
+        hg (get-in pet [:hunger :current-value])
+        is-candy (= (:food values) (get-in const/constants [:food :candy :type]))
         hp (get-in pet [:happiness :current-value])]
-    (merge pet {:hunger    {:current-value (if (> hg 0) (dec hg) hg)
-                            :last-check    (time/now)}
-                :weight    (+ (:weight pet) (get-in const/constants [:food (keyword (str/lower-case food))
-                                                                     :weight-gain]))
-                :happiness (if is-candy
-                             {:current-value (inc hp)
-                              :last-check    (time/now)}
-                             (:happiness pet))})))
+    (if (some? pet)
+      (do
+        (merge pet {:hunger    {:current-value (if (> hg 0) (dec hg) hg)
+                                :last-check    (time/now)}
+                    :weight    (+ (:weight pet) (get-in const/constants [:food (keyword (str/lower-case food))
+                                                                         :weight-gain]))
+                    :happiness (if is-candy
+                                 {:current-value (inc hp)
+                                  :last-check    (time/now)}
+                                 (:happiness pet))})
+        (http/standard-response "Pet fed"))
+      (http/standard-error "Pet does not exist for this user"))))
 
 
 (defn heal-pet "Give medicine to the pet"
