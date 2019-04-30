@@ -2,57 +2,32 @@
   (:gen-class)
   (:require [compojure.core :refer :all]
             [org.httpkit.server :refer [run-server]]
-            [monger.collection :as mc]
             [mount.core :as mount]
             [virtual-pet.actions :as actions]
-            [virtual-pet.db :refer [db conn]]
-            [virtual-pet.http :as http]
+            [virtual-pet.db :as db-actions]
             [virtual-pet.status :as status]))
-
-
-(defn is-name-taken
-  [name username]
-  (mc/any? db "pets" {:name name :username username}))
-
-
-(defn create-pet
-  [request]
-  (let [body (http/get-body request)
-        name (:name body)
-        username (:username body)
-        initial-pet (actions/template-pet name username)]
-    (println db)
-    (println name)
-    (if (not (is-name-taken name username))
-      (try
-        (mc/insert db "pets" initial-pet)
-        (http/standard-response "Create initial pet ok")
-        (catch Exception e (http/standard-error (str "Error writing the initial pet: " (.getMessage e)))))
-      (http/standard-error "Name already exists for this user"))))
-
-
-(defn get-pet
-  [name username]
-  (mc/find-one-as-map db "pets" {:name name :username username}))
 
 
 (defroutes app
            (GET "/" [] "Hello World")
            (GET "/full-stats-pet/:pet-name/user/:username" [pet-name username]
-             (status/get-full-stats (get-pet pet-name username)))
+             (status/get-full-stats (db-actions/get-pet pet-name username)))
            (GET "/base-stats-pet/:pet-name/user/:username" [pet-name username]
-             (status/get-base-stats (get-pet pet-name username)))
+             (status/get-base-stats (db-actions/get-pet pet-name username)))
            (GET "/hunger-stats-pet/:pet-name/user/:username" [pet-name username]
-             (status/get-hunger (get-pet pet-name username)))
+             (status/get-specific-stat (db-actions/get-pet pet-name username) "hunger"))
            (GET "/happiness-stats-pet/:pet-name/user/:username" [pet-name username]
-             (status/get-happiness (get-pet pet-name username)))
+             (status/get-specific-stat (db-actions/get-pet pet-name username) "happiness"))
            (GET "/sickness-stats-pet/:pet-name/user/:username" [pet-name username]
-             (status/get-sickness (get-pet pet-name username)))
+             (status/get-specific-stat (db-actions/get-pet pet-name username) "sickness"))
            (GET "/dirtiness-stats-pet/:pet-name/user/:username" [pet-name username]
-             (status/get-dirtiness (get-pet pet-name username)))
+             (status/get-specific-stat (db-actions/get-pet pet-name username) "dirtiness"))
            (GET "/anger-stats-pet/:pet-name/user/:username" [pet-name username]
-             (status/get-anger (get-pet pet-name username)))
-           (POST "/create-pet/" [] (fn [request] (create-pet request))))
+             (status/get-specific-stat (db-actions/get-pet pet-name username) "anger"))
+           (POST "/create-pet/" [] (fn [request] (actions/create-pet request)))
+
+
+           (POST "/feed-pet/" [] (fn [request] (actions/feed-pet request))))
 
 
 (defn -main []

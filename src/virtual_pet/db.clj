@@ -1,12 +1,23 @@
 (ns virtual-pet.db
-  (:require [monger.core :as mg]
+  (:require [monger.collection :as mc]
+            [monger.core :as mg]
             [mount.core :refer [defstate]]))
 
 
-(defstate conn
+(defstate conn "Create the connection"
           :start (mg/connect {:host "mongo" :port 27017})
           :stop (mg/disconnect conn))
 
 
-(defstate db
+(defstate db "Get the database"
           :start (mg/get-db conn "virtual-pet"))
+
+
+(defn is-name-taken "Check if a pet already exists with a given name for a given user"
+  [name username]
+  (mc/any? db "pets" {:name name :username username}))
+
+
+(defn get-pet "Retrieve a pet"
+  [name username]
+  (mc/find-one-as-map db "pets" {:name name :username username}))
