@@ -21,3 +21,8 @@
 (defn get-pet "Retrieve a pet"
   [name username]
   (mc/find-one-as-map db "pets" {:name name :username username}))
+
+
+(defn update-pet "Update a pet"
+  [pet]
+  (mc/update db "pets" {:name name :username username} pet))

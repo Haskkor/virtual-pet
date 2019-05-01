@@ -61,27 +61,39 @@
                                  {:current-value (inc hp)
                                   :last-check    (time/now)}
                                  (:happiness pet))})
+        (db-actions/update-pet pet)
         (http/standard-response "Pet fed"))
       (http/standard-error "Pet does not exist for this user"))))
 
 
 (defn heal-pet "Give medicine to the pet"
-  [pet]
-  (let [hp (get-in pet [:happiness :current-value])
+  [request]
+  (let [values (http/get-values request)
+        pet (db-actions/get-pet (:name values) (:username values))
+        hp (get-in pet [:happiness :current-value])
         sk (get-in pet [:sickness :current-value])]
-    (merge pet {:sickness  {:current-value (if (> sk 0) (dec sk) sk)
-                            :last-check    (time/now)}
-                :happiness {:current-value (if (= sk 0) (dec hp) hp)
-                            :last-check    (time/now)}})))
+    (if (some? pet)
+      (do
+        (merge pet {:sickness   {:current-value (if (> sk 0) (dec sk) sk)}
+                    :last-check (time/now)}
+               :happiness {:current-value (if (= sk 0) (dec hp) hp)
+                           :last-check    (time/now)})
+        (db-actions/update-pet pet)
+        (http/standard-response "Pet healed"))
+      (http/standard-error "Pet does not exist for this user"))))
 
 
+;; TODO
 (defn pet-pet "Pet the pet"
-  [current-happiness]
-  (let [hp (:current-value current-happiness)]
+  [request]
+  (let [values (http/get-values request)
+        pet (db-actions/get-pet (:name values) (:username values))
+        hp (get-in pet [:happiness :current-value])]
     {:current-value (if (< hp (get-in const/constants [:thresholds :happiness])) (inc hp) hp)
      :last-check    (time/now)}))
 
 
+;; TODO
 (defn ground-pet "Ground the pet"
   [pet]
   (let [ag (get-in pet [:anger :current-value])
@@ -92,6 +104,7 @@
                             :last-check    (time/now)}})))
 
 
+;; TODO
 (defn clean-pet
   [current-dirtyness]
   (let [dt (:current-value current-dirtyness)]
@@ -99,6 +112,7 @@
      :last-check    (time/now)}))
 
 
+;; TODO
 (defn change-lights
   [current-lights]
   {:current-value (not (:current-value current-lights))
