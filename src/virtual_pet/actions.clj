@@ -74,46 +74,69 @@
         sk (get-in pet [:sickness :current-value])]
     (if (some? pet)
       (do
-        (merge pet {:sickness   {:current-value (if (> sk 0) (dec sk) sk)}
-                    :last-check (time/now)}
-               :happiness {:current-value (if (= sk 0) (dec hp) hp)
-                           :last-check    (time/now)})
+        (merge pet {:sickness  {:current-value (if (> sk 0) (dec sk) sk)
+                                :last-check    (time/now)}
+                    :happiness {:current-value (if (= sk 0) (dec hp) hp)
+                                :last-check    (time/now)}})
         (db-actions/update-pet pet)
         (http/standard-response "Pet healed"))
       (http/standard-error "Pet does not exist for this user"))))
 
 
-;; TODO
 (defn pet-pet "Pet the pet"
   [request]
   (let [values (http/get-values request)
         pet (db-actions/get-pet (:name values) (:username values))
         hp (get-in pet [:happiness :current-value])]
-    {:current-value (if (< hp (get-in const/constants [:thresholds :happiness])) (inc hp) hp)
-     :last-check    (time/now)}))
+    (if (some? pet)
+      (do
+        (merge pet {:happiness {:current-value (if (< hp (get-in const/constants [:thresholds :happiness])) (inc hp) hp)
+                                :last-check    (time/now)}})
+        (db-actions/update-pet pet)
+        (http/standard-response "Pet petted"))
+      (http/standard-error "Pet does not exist for this user"))))
 
 
-;; TODO
 (defn ground-pet "Ground the pet"
-  [pet]
-  (let [ag (get-in pet [:anger :current-value])
+  [request]
+  (let [values (http/get-values request)
+        pet (db-actions/get-pet (:name values) (:username values))
+        ag (get-in pet [:anger :current-value])
         hp (get-in pet [:happiness :current-value])]
-    (merge pet {:anger     {:current-value (if (> ag 0) (dec ag) ag)
-                            :last-check    (time/now)}
-                :happiness {:current-value (if (= ag 0) (dec hp) hp)
-                            :last-check    (time/now)}})))
+    (if (some? pet)
+      (do
+        (merge pet {:anger     {:current-value (if (> ag 0) (dec ag) ag)
+                                :last-check    (time/now)}
+                    :happiness {:current-value (if (= ag 0) (dec hp) hp)
+                                :last-check    (time/now)}})
+        (db-actions/update-pet pet)
+        (http/standard-response "Pet grounded"))
+      (http/standard-error "Pet does not exist for this user"))))
 
 
-;; TODO
-(defn clean-pet
-  [current-dirtyness]
-  (let [dt (:current-value current-dirtyness)]
-    {:current-value (if (< dt (get-in const/constants [:thresholds :dirtiness])) (dec dt) dt)
-     :last-check    (time/now)}))
+(defn clean-pet "Clean the pet"
+  [request]
+  (let [values (http/get-values request)
+        pet (db-actions/get-pet (:name values) (:username values))
+        dt (get-in pet [:dirtiness :current-value])]
+    (if (some? pet)
+      (do
+        (merge pet {:dirtiness {:current-value (if (< dt (get-in const/constants [:thresholds :dirtiness])) (dec dt) dt)
+                                :last-check    (time/now)}})
+        (db-actions/update-pet pet)
+        (http/standard-response "Pet cleaned"))
+      (http/standard-error "Pet does not exist for this user"))))
 
 
-;; TODO
-(defn change-lights
-  [current-lights]
-  {:current-value (not (:current-value current-lights))
-   :last-check    (time/now)})
+(defn change-lights "Turn the lights on/off"
+  [request]
+  (let [values (http/get-values request)
+        pet (db-actions/get-pet (:name values) (:username values))
+        lt (get-in pet [:lights :current-value])]
+    (if (some? pet)
+      (do
+        (merge pet {:lights {:current-value (not lt)
+                             :last-check    (time/now)}})
+        (db-actions/update-pet pet)
+        (http/standard-response (clojure.string/join "Lights are now " (if lt "off" "on"))))
+      (http/standard-error "Pet does not exist for this user"))))
