@@ -25,4 +25,6 @@
 
 (defn update-pet "Update a pet"
   [pet]
-  (mc/update db "pets" {:name name :username username} pet))
+  (let [username (:username pet)
+        name (:name pet)]
+    (mc/update db "pets" {:name name :username username} pet)))

@@ -8,6 +8,9 @@
             [virtual-pet.status :as status]))
 
 
+(mount/start)
+
+
 (defroutes app
            (GET "/" [] "Hello World")
            (GET "/full-stats-pet/:pet-name/user/:username" [pet-name username]
@@ -37,6 +40,3 @@
   (let [port (Integer/parseInt (or (System/getenv "PORT") "8080"))]
     (run-server app {:port port})
     (println (str "Listening on port " port))))
-
-
-(mount/start)

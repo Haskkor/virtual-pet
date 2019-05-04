@@ -20,7 +20,6 @@
     (http/standard-error "Pet does not exit for this user")))
 
 
-
 (defn get-base-stats
   [pet]
   (let [name (:name pet)

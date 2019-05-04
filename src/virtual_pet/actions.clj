@@ -38,7 +38,7 @@
         initial-pet (template-pet (:name names) (:username names))]
     (if (not (db-actions/is-name-taken (:name names) (:username names)))
       (try
-        (mc/insert db "pets" initial-pet)
+        (mc/insert db-actions/db "pets" initial-pet)
         (http/standard-response "Create initial pet ok")
         (catch Exception e (http/standard-error (str "Error writing the initial pet: " (.getMessage e)))))
       (http/standard-error "Name already exists for this user"))))
@@ -49,7 +49,8 @@
   (let [values (http/get-values request)
         pet (db-actions/get-pet (:name values) (:username values))
         hg (get-in pet [:hunger :current-value])
-        is-candy (= (:food values) (get-in const/constants [:food :candy :type]))
+        food (:food values)
+        is-candy (= food (get-in const/constants [:food :candy :type]))
         hp (get-in pet [:happiness :current-value])]
     (if (some? pet)
       (do
