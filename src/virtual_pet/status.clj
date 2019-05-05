@@ -14,7 +14,7 @@
           sk (get-in pet [:sickness :current-value])
           dt (get-in pet [:dirtiness :current-value])
           ag (get-in pet [:anger :current-value])]
-      (http/standard-response (clojure.string/join "" [name ": " (str age) " day(s) old, " (str wght) " grams. Lights on: " (str lght)
+      (http/standard-response (clojure.string/join "" [name ": " (str age) " day(s) old, " (str wght) " grams. Lights on: " (if lght "true" "false")
                                                        ". Hunger: " (str hg) ". Happiness: " (str hp) ". Sickness: " (str sk) ". Dirtiness: "
                                                        (str dt) ". Anger: " (str ag) "."])))
     (http/standard-error "Pet does not exit for this user")))
@@ -26,7 +26,7 @@
         age (get-in pet [:age :current-value])
         wght (:weight pet)
         lght (get-in pet [:lights :current-value])]
-    (clojure.string/join "" [name ": " (str age) " day(s) old, " (str wght) " grams. Lights on: " (str lght)])))
+    (clojure.string/join "" [name ": " (str age) " day(s) old, " (str wght) " grams. Lights on: " (if lght "true" "false")])))
 
 
 (defn get-specific-stat

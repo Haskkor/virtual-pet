@@ -4,7 +4,8 @@
             [monger.collection :as mc]
             [virtual-pet.constants :as const]
             [virtual-pet.db :as db-actions]
-            [virtual-pet.http :as http])
+            [virtual-pet.http :as http]
+            [virtual-pet.utils :as utils])
   (:import (org.bson.types ObjectId)))
 
 
@@ -54,16 +55,18 @@
         hp (get-in pet [:happiness :current-value])]
     (if (some? pet)
       (do
-        (merge pet {:hunger    {:current-value (if (> hg 0) (dec hg) hg)
-                                :last-check    (time/now)}
-                    :weight    (+ (:weight pet) (get-in const/constants [:food (keyword (str/lower-case food))
-                                                                         :weight-gain]))
-                    :happiness (if is-candy
-                                 {:current-value (inc hp)
-                                  :last-check    (time/now)}
-                                 (:happiness pet))})
-        (db-actions/update-pet pet)
-        (http/standard-response "Pet fed"))
+        (let [merged-pet (utils/deep-merge pet {:hunger    {:current-value (if (> hg 0) (dec hg) hg)
+                                                            :last-check    (str (time/now))}
+                                                :weight    (+ (:weight pet)
+                                                              (get-in const/constants
+                                                                      [:food (keyword (str/lower-case food))
+                                                                       :weight-gain]))
+                                                :happiness (if is-candy
+                                                             {:current-value (inc hp)
+                                                              :last-check    (str (time/now))}
+                                                             (:happiness pet))})]
+          (db-actions/update-pet merged-pet)
+          (http/standard-response "Pet fed")))
       (http/standard-error "Pet does not exist for this user"))))
 
 
@@ -75,12 +78,12 @@
         sk (get-in pet [:sickness :current-value])]
     (if (some? pet)
       (do
-        (merge pet {:sickness  {:current-value (if (> sk 0) (dec sk) sk)
-                                :last-check    (time/now)}
-                    :happiness {:current-value (if (= sk 0) (dec hp) hp)
-                                :last-check    (time/now)}})
-        (db-actions/update-pet pet)
-        (http/standard-response "Pet healed"))
+        (let [merged-pet (utils/deep-merge pet {:sickness  {:current-value (if (> sk 0) (dec sk) sk)
+                                                            :last-check    (str (time/now))}
+                                                :happiness {:current-value (if (= sk 0) (dec hp) hp)
+                                                            :last-check    (str (time/now))}})]
+          (db-actions/update-pet merged-pet)
+          (http/standard-response "Pet healed")))
       (http/standard-error "Pet does not exist for this user"))))
 
 
@@ -91,10 +94,12 @@
         hp (get-in pet [:happiness :current-value])]
     (if (some? pet)
       (do
-        (merge pet {:happiness {:current-value (if (< hp (get-in const/constants [:thresholds :happiness])) (inc hp) hp)
-                                :last-check    (time/now)}})
-        (db-actions/update-pet pet)
-        (http/standard-response "Pet petted"))
+        (let [merged-pet (utils/deep-merge pet {:happiness {:current-value (if (< hp (get-in const/constants
+                                                                                             [:thresholds :happiness]))
+                                                                             (inc hp) hp)
+                                                            :last-check    (str (time/now))}})]
+          (db-actions/update-pet merged-pet)
+          (http/standard-response "Pet petted")))
       (http/standard-error "Pet does not exist for this user"))))
 
 
@@ -106,12 +111,12 @@
         hp (get-in pet [:happiness :current-value])]
     (if (some? pet)
       (do
-        (merge pet {:anger     {:current-value (if (> ag 0) (dec ag) ag)
-                                :last-check    (time/now)}
-                    :happiness {:current-value (if (= ag 0) (dec hp) hp)
-                                :last-check    (time/now)}})
-        (db-actions/update-pet pet)
-        (http/standard-response "Pet grounded"))
+        (let [merged-pet (utils/deep-merge pet {:anger     {:current-value (if (> ag 0) (dec ag) ag)
+                                                            :last-check    (str (time/now))}
+                                                :happiness {:current-value (if (= ag 0) (dec hp) hp)
+                                                            :last-check    (str (time/now))}})]
+          (db-actions/update-pet merged-pet)
+          (http/standard-response "Pet grounded")))
       (http/standard-error "Pet does not exist for this user"))))
 
 
@@ -122,10 +127,12 @@
         dt (get-in pet [:dirtiness :current-value])]
     (if (some? pet)
       (do
-        (merge pet {:dirtiness {:current-value (if (< dt (get-in const/constants [:thresholds :dirtiness])) (dec dt) dt)
-                                :last-check    (time/now)}})
-        (db-actions/update-pet pet)
-        (http/standard-response "Pet cleaned"))
+        (let [merged-pet (utils/deep-merge pet {:dirtiness {:current-value (if (< dt (get-in const/constants
+                                                                                             [:thresholds :dirtiness]))
+                                                                             (dec dt) dt)
+                                                            :last-check    (str (time/now))}})]
+          (db-actions/update-pet merged-pet)
+          (http/standard-response "Pet cleaned")))
       (http/standard-error "Pet does not exist for this user"))))
 
 
@@ -133,11 +140,11 @@
   [request]
   (let [values (http/get-values request)
         pet (db-actions/get-pet (:name values) (:username values))
-        lt (get-in pet [:lights :current-value])]
+        lt (not (get-in pet [:lights :current-value]))]
     (if (some? pet)
       (do
-        (merge pet {:lights {:current-value (not lt)
-                             :last-check    (time/now)}})
-        (db-actions/update-pet pet)
-        (http/standard-response (clojure.string/join "Lights are now " (if lt "off" "on"))))
+        (let [merged-pet (utils/deep-merge pet {:lights {:current-value lt
+                                                         :last-check    (str (time/now))}})]
+          (db-actions/update-pet merged-pet)
+          (http/standard-response (format "Lights are now %s" (if lt "on" "off")))))
       (http/standard-error "Pet does not exist for this user"))))
