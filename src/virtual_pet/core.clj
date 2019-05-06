@@ -1,11 +1,19 @@
 (ns virtual-pet.core
   (:gen-class)
   (:require [compojure.core :refer :all]
-            [org.httpkit.server :refer [run-server]]
+            [clojurewerkz.quartzite.scheduler :as scheduler]
+            [clojurewerkz.quartzite.triggers :as triggers]
+            [clojurewerkz.quartzite.jobs :as jobs]
+            [clojurewerkz.quartzite.jobs :refer [defjob]]
+            [clojurewerkz.quartzite.schedule.calendar-interval :refer [schedule with-interval-in-seconds]]
             [mount.core :as mount]
+            [org.httpkit.server :refer [run-server]]
             [virtual-pet.actions :as actions]
             [virtual-pet.db :as db-actions]
-            [virtual-pet.status :as status]))
+            [virtual-pet.life :refer [live]]
+            [virtual-pet.status :as status])
+  (:import (org.quartz.jobs NoOpJob)))
+
 
 
 (mount/start)
@@ -36,7 +44,21 @@
            (POST "/change-lights/" [] (fn [request] (actions/change-lights request))))
 
 
+(defjob NoOpJob
+        [ctx]
+        (live))
+
+
 (defn -main []
-  (let [port (Integer/parseInt (or (System/getenv "PORT") "8080"))]
-    (run-server app {:port port})
+  (let [port (Integer/parseInt (or (System/getenv "PORT") "8080"))
+        s (-> (scheduler/initialize) scheduler/start)
+        j (jobs/build
+            (jobs/of-type NoOpJob)
+            (jobs/with-identity (jobs/key "jobs.noop.1")))
+        t (triggers/build
+            (triggers/with-identity (triggers/key "triggers.1"))
+            (triggers/start-now)
+            (triggers/with-schedule (schedule (with-interval-in-seconds 2))))]
+    (scheduler/schedule s j t)
+    ;(run-server app {:port port})
     (println (str "Listening on port " port))))

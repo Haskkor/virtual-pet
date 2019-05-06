@@ -1,7 +1,8 @@
 (ns virtual-pet.db
   (:require [monger.collection :as mc]
             [monger.core :as mg]
-            [mount.core :refer [defstate]]))
+            [mount.core :refer [defstate]]
+            [virtual-pet.life :refer [live]]))
 
 
 (defstate conn "Create the connection"
@@ -25,6 +26,10 @@
 
 (defn update-pet "Update a pet"
   [pet]
-  (let [username (:username pet)
-        name (:name pet)]
-    (mc/update db "pets" {:name name :username username} pet)))
+  (let [id (:_id pet)]
+    (mc/update db "pets" {:_id id} pet)))
+
+
+(defn get-all-pets "Get all the pets"
+  []
+  (mc/find-maps db "pets"))
