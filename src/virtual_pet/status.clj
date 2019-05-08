@@ -13,10 +13,11 @@
           hp (get-in pet [:happiness :current-value])
           sk (get-in pet [:sickness :current-value])
           dt (get-in pet [:dirtiness :current-value])
-          ag (get-in pet [:anger :current-value])]
+          ag (get-in pet [:anger :current-value])
+          sl (get-in pet [:sleeping :current-value])]
       (http/standard-response (clojure.string/join "" [name ": " (str age) " day(s) old, " (str wght) " grams. Lights on: " (if lght "true" "false")
                                                        ". Hunger: " (str hg) ". Happiness: " (str hp) ". Sickness: " (str sk) ". Dirtiness: "
-                                                       (str dt) ". Anger: " (str ag) "."])))
+                                                       (str dt) ". Anger: " (str ag) ". Sleeping: " (str sl) "."])))
     (http/standard-error "Pet does not exit for this user")))
 
 

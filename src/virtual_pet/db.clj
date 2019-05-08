@@ -1,8 +1,7 @@
 (ns virtual-pet.db
   (:require [monger.collection :as mc]
             [monger.core :as mg]
-            [mount.core :refer [defstate]]
-            [virtual-pet.life :refer [live]]))
+            [mount.core :refer [defstate]]))
 
 
 (defstate conn "Create the connection"

@@ -5,15 +5,13 @@
             [clojurewerkz.quartzite.triggers :as triggers]
             [clojurewerkz.quartzite.jobs :as jobs]
             [clojurewerkz.quartzite.jobs :refer [defjob]]
-            [clojurewerkz.quartzite.schedule.calendar-interval :refer [schedule with-interval-in-seconds]]
+            [clojurewerkz.quartzite.schedule.calendar-interval :refer [schedule with-interval-in-minutes]]
             [mount.core :as mount]
             [org.httpkit.server :refer [run-server]]
             [virtual-pet.actions :as actions]
             [virtual-pet.db :as db-actions]
             [virtual-pet.life :refer [live]]
-            [virtual-pet.status :as status])
-  (:import (org.quartz.jobs NoOpJob)))
-
+            [virtual-pet.status :as status]))
 
 
 (mount/start)
@@ -35,6 +33,8 @@
              (status/get-specific-stat (db-actions/get-pet pet-name username) "dirtiness"))
            (GET "/anger-stats-pet/:pet-name/user/:username" [pet-name username]
              (status/get-specific-stat (db-actions/get-pet pet-name username) "anger"))
+           (GET "/sleeping-stats-pet/:pet-name/user/:username" [pet-name username]
+             (status/get-specific-stat (db-actions/get-pet pet-name username) "sleeping"))
            (POST "/create-pet/" [] (fn [request] (actions/create-pet request)))
            (POST "/feed-pet/" [] (fn [request] (actions/feed-pet request)))
            (POST "/heal-pet/" [] (fn [request] (actions/heal-pet request)))
@@ -58,7 +58,7 @@
         t (triggers/build
             (triggers/with-identity (triggers/key "triggers.1"))
             (triggers/start-now)
-            (triggers/with-schedule (schedule (with-interval-in-seconds 2))))]
+            (triggers/with-schedule (schedule (with-interval-in-minutes 1))))]
     (scheduler/schedule s j t)
-    ;(run-server app {:port port})
+    (run-server app {:port port})
     (println (str "Listening on port " port))))

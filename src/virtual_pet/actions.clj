@@ -29,6 +29,8 @@
    :name      name
    :sickness  {:current-value (get-in const/constants [:base :sickness])
                :last-check    (str (time/now))}
+   :sleeping  {:current-value false
+               :last-check    (str (time/now))}
    :username  username
    :weight    10})
 
