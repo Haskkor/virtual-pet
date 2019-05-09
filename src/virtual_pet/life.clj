@@ -38,8 +38,14 @@
                                      :last-check    (str (time/now))}))
           (when (>= 3 sk) (merge hp {:current-value (dec (:current-value hp))
                                      :last-check    (str (time/now))}))
+
+
+
           (when (and (not lt) (not sl)) (merge hp {:current-value (- (:current-value hp) 2)
                                                    :last-check    (str (time/now))})))
+
+
+
     (if (> (time/in-hours (time/interval (coerce/from-string hpt) (time/now))) 2)
       (merge hp {:current-value (dec (:current-value hp)) :last-check (str (time/now))}))
     (utils/deep-merge pet {:happiness hp})))
@@ -53,6 +59,11 @@
     pet))
 
 
+(defn check-lights "Change values based on the lights status"
+  [pet]
+  ())
+
+
 (defn live "Apply all the life functions to a pet"
   []
   (let [pets (db-actions/get-all-pets)]
@@ -61,5 +72,6 @@
                loose-weight
                loose-happiness
                increase-hunger
+               check-lights
                db-actions/update-pet)
           pets)))

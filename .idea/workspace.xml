@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2564c6cd-52e9-4db7-8151-feef044640fb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/virtual_pet/actions.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_pet/actions.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/virtual_pet/core.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_pet/core.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/virtual_pet/db.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_pet/db.clj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/virtual_pet/life.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_pet/life.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/virtual_pet/status.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/virtual_pet/status.clj" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,8 +41,8 @@
             <entry file="file://$PROJECT_DIR$/README.md">
               <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
                 <state split_layout="FIRST">
-                  <first_editor relative-caret-position="690">
-                    <caret line="69" column="82" selection-start-line="69" selection-start-column="82" selection-end-line="69" selection-end-column="82" />
+                  <first_editor relative-caret-position="795">
+                    <caret line="76" column="27" selection-start-line="76" selection-start-column="27" selection-end-line="76" selection-end-column="27" />
                   </first_editor>
                   <second_editor />
                 </state>
@@ -105,8 +101,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/virtual_pet/life.clj">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="915">
-                  <caret line="61" column="29" selection-start-line="61" selection-start-column="29" selection-end-line="61" selection-end-column="29" />
+                <state relative-caret-position="885">
+                  <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
                 </state>
               </provider>
             </entry>
@@ -172,10 +168,10 @@
         <option value="$PROJECT_DIR$/project.clj" />
         <option value="$PROJECT_DIR$/src/virtual_pet/db.clj" />
         <option value="$PROJECT_DIR$/src/virtual_pet/actions.clj" />
-        <option value="$PROJECT_DIR$/src/virtual_pet/life.clj" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/virtual_pet/core.clj" />
         <option value="$PROJECT_DIR$/src/virtual_pet/status.clj" />
+        <option value="$PROJECT_DIR$/src/virtual_pet/life.clj" />
       </list>
     </option>
   </component>
@@ -305,7 +301,7 @@
       <recent name="$PROJECT_DIR$/src/resources" />
     </key>
   </component>
-  <component name="ReplState" timestamp="1557263217099">{:repl-history {:ide [], :local [{:command &quot;(create-initial-pet)&quot;, :offset 20, :ns &quot;virtual-pet.core&quot;} {:command &quot;(def conn (mg/connect))&quot;, :offset 23, :ns &quot;virtual-pet.core&quot;} {:command &quot;(def db (mg/get-db conn \&quot;virtual-pet\&quot;))&quot;, :offset 39, :ns &quot;virtual-pet.core&quot;} {:command &quot;(mc/find db \&quot;pets\&quot; {:name \&quot;JeremyGotchi\&quot;})&quot;, :offset 42, :ns &quot;virtual-pet.core&quot;} {:command &quot;(mc/find-maps db \&quot;pets\&quot; {:name \&quot;JeremyGotchi\&quot;})&quot;, :offset 47, :ns &quot;virtual-pet.core&quot;} {:command &quot;(mc/count db \&quot;pets\&quot; {:name \&quot;JeremyGotchi\&quot;})&quot;, :offset 43, :ns &quot;virtual-pet.core&quot;} {:command &quot;(mc/any db \&quot;pets\&quot; {:name \&quot;JeremyGotchi\&quot;})&quot;, :offset 41, :ns &quot;virtual-pet.core&quot;} {:command &quot;(mc/any? db \&quot;pets\&quot; {:name \&quot;JeremyGotchi\&quot;})&quot;, :offset 42, :ns &quot;virtual-pet.core&quot;} {:command &quot;(grow-older 1)&quot;, :offset 14, :ns &quot;virtual-pet.core&quot;} {:command &quot;(virtual-pet.life/grow-older 1)&quot;, :offset 31, :ns &quot;virtual-pet.core&quot;} {:command &quot;(-main)&quot;, :offset 7, :ns &quot;virtual-pet.core&quot;}], :remote []}}</component>
+  <component name="ReplState" timestamp="1557365172745">{:repl-history {:ide [], :local [{:command &quot;(create-initial-pet)&quot;, :offset 20, :ns &quot;virtual-pet.core&quot;} {:command &quot;(def conn (mg/connect))&quot;, :offset 23, :ns &quot;virtual-pet.core&quot;} {:command &quot;(def db (mg/get-db conn \&quot;virtual-pet\&quot;))&quot;, :offset 39, :ns &quot;virtual-pet.core&quot;} {:command &quot;(mc/find db \&quot;pets\&quot; {:name \&quot;JeremyGotchi\&quot;})&quot;, :offset 42, :ns &quot;virtual-pet.core&quot;} {:command &quot;(mc/find-maps db \&quot;pets\&quot; {:name \&quot;JeremyGotchi\&quot;})&quot;, :offset 47, :ns &quot;virtual-pet.core&quot;} {:command &quot;(mc/count db \&quot;pets\&quot; {:name \&quot;JeremyGotchi\&quot;})&quot;, :offset 43, :ns &quot;virtual-pet.core&quot;} {:command &quot;(mc/any db \&quot;pets\&quot; {:name \&quot;JeremyGotchi\&quot;})&quot;, :offset 41, :ns &quot;virtual-pet.core&quot;} {:command &quot;(mc/any? db \&quot;pets\&quot; {:name \&quot;JeremyGotchi\&quot;})&quot;, :offset 42, :ns &quot;virtual-pet.core&quot;} {:command &quot;(grow-older 1)&quot;, :offset 14, :ns &quot;virtual-pet.core&quot;} {:command &quot;(virtual-pet.life/grow-older 1)&quot;, :offset 31, :ns &quot;virtual-pet.core&quot;} {:command &quot;(-main)&quot;, :offset 7, :ns &quot;virtual-pet.core&quot;}], :remote []}}</component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -382,7 +378,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60589000" />
+    <option name="totallyTimeSpent" value="61421000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1417" extended-state="6" />
@@ -545,20 +541,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/virtual_pet/life.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="915">
-          <caret line="61" column="29" selection-start-line="61" selection-start-column="29" selection-end-line="61" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="690">
-            <caret line="69" column="82" selection-start-line="69" selection-start-column="82" selection-end-line="69" selection-end-column="82" />
+          <first_editor relative-caret-position="795">
+            <caret line="76" column="27" selection-start-line="76" selection-start-column="27" selection-end-line="76" selection-end-column="27" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/virtual_pet/life.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="885">
+          <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
         </state>
       </provider>
     </entry>
