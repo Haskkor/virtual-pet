@@ -65,9 +65,9 @@
         * Increase by 1 when petted or played with
         * Decrease by 1 when grounded
         * Decrease by 2 every 30 minutes if the light is off when awake
+        * Decrease by 1 every hour if the light is not off when sleeping
         * Decrease by 1 when hunger is at 3 or higher every 30 minutes
         * Decrease by 1 when sickness is at 3 or higher every 30 minutes
-        * Decrease by 1 every hour if the light is not off when sleeping    -> TODO
         * Decreased by 1 every 2 hour
             * Every 30 minutes when baby or old
 * SICKNESS
