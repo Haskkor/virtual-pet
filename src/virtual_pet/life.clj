@@ -66,6 +66,13 @@
     (utils/deep-merge pet {:happiness hp :lights lights})))
 
 
+(defn check-sleep "Change value of sleep over time"
+  [pet]
+  (let [sl (get-in pet [:sleeping :current-value])
+        h (time/hour (time/now))]
+    (case )))
+
+
 (defn live "Apply all the life functions to a pet"
   []
   (let [pets (db-actions/get-all-pets)]
@@ -74,6 +81,7 @@
                loose-weight
                loose-happiness
                increase-hunger
+               check-sleep
                check-lights
                db-actions/update-pet)
           pets)))
